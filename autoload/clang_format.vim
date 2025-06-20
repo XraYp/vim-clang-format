@@ -260,8 +260,13 @@ function! clang_format#replace_ranges(ranges, ...) abort
     endif
 
     let winview = winsaveview()
-    let formatted = trim(formatted, "\n", 2)
     let splitted = split(formatted, '\n', 1)
+    if len(splitted) > 0
+      let last = splitted[len(splitted) - 1]
+      if last == ' ' || last == ''
+        let splitted = splitted[0:(len(splitted) - 2)]
+      endif
+    endif
 
     silent! undojoin
     if line('$') > len(splitted)
