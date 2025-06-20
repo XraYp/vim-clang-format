@@ -260,6 +260,7 @@ function! clang_format#replace_ranges(ranges, ...) abort
     endif
 
     let winview = winsaveview()
+    let formatted = trim(formatted, "\n", 2)
     let splitted = split(formatted, '\n', 1)
 
     silent! undojoin
