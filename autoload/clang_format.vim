@@ -263,7 +263,7 @@ function! clang_format#replace_ranges(ranges, ...) abort
     let splitted = split(formatted, '\n', 1)
     if len(splitted) > 0
       let last = splitted[len(splitted) - 1]
-      if last == ' ' || last == ''
+      if last == ' ' * len(last)
         let splitted = splitted[0:(len(splitted) - 2)]
       endif
     endif
